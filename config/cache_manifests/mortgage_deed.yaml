@@ -1,0 +1,53 @@
+document_type: mortgage_deed
+priority_order:
+  - name: Transfer of Property Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 2000
+    section_hint: "58(a)-58(f), 58(b) simple mortgage, 58(e) English mortgage, 58(f) equitable mortgage, 67, 104"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "17"
+  - name: Indian Contract Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "10-25"
+  - name: SARFAESI Act, 2002
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "13-14"
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 3000
+    section_hint: "149-153"
+    priority: low
+  - name: Maharashtra Stamp Act, 1958
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Article 6"
+    priority: low
+  - name: Indian Stamp Act, 1899
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "3"
+    priority: low
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 400
+    section_hint: "24"
+    priority: low
+  - name: BHC Judgment - Mortgage Enforcement 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_10_Ratnagiri_Loan.docx
+    tokens: 3100
+    section_hint: "TPA s.58 simple mortgage enforcement"
+    priority: low
+  - name: BHC Judgment - Equitable Mortgage Rights 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_9_Nashik_Corporate.docx
+    tokens: 2800
+    section_hint: "TPA s.58(f) equitable mortgage by deposit of title deeds"
+    priority: low
+  - name: BHC Judgment - Foreclosure Proceedings 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_8_Solapur_Direct.docx
+    tokens: 3300
+    section_hint: "TPA s.67 foreclosure, SARFAESI s.13 enforcement"
+    priority: low

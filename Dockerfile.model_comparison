@@ -1,0 +1,68 @@
+# Dockerfile.model_comparison
+#
+# One-command setup for running the 3-tier SLM model comparison on any cloud VM.
+#
+# Build:
+#   docker build -f Dockerfile.model_comparison -t maharashtra-model-comparison .
+#
+# Run (Groq-only, no Ollama):
+#   docker run --rm \
+#     -e GROQ_API_KEY=gsk_... \
+#     -v $(pwd)/output:/app/output \
+#     maharashtra-model-comparison \
+#     --models llama-3.1-8b llama-3.3-70b --doc-types all
+#
+# Run (full pipeline with local Ollama):
+#   docker run --rm \
+#     --network host \
+#     -e GROQ_API_KEY=gsk_... \
+#     -v $(pwd)/output:/app/output \
+#     maharashtra-model-comparison \
+#     --models all --doc-types all
+#
+# Run with JSON logs (for CloudWatch / Stackdriver):
+#   docker run --rm \
+#     -e GROQ_API_KEY=gsk_... \
+#     -v $(pwd)/output:/app/output \
+#     maharashtra-model-comparison \
+#     --models all --doc-types all --json-logs
+#
+# Dry-run (validate connectivity before a long run):
+#   docker run --rm \
+#     -e GROQ_API_KEY=gsk_... \
+#     maharashtra-model-comparison \
+#     --models all --dry-run
+
+FROM python:3.11-slim
+
+# System dependencies for reportlab (PDF generation) and spacy
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy dependency files first for layer caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir python-json-logger
+
+# Copy project source
+COPY config/ config/
+COPY src/ src/
+COPY scripts/run_model_comparison.py scripts/run_model_comparison.py
+
+# Output directory (mount a volume here to persist results)
+RUN mkdir -p output/model_comparison
+
+# Default environment — can be overridden at runtime
+ENV ENABLE_PHASE_1_5=true \
+    ENABLE_MODEL_COMPARISON=true \
+    MODEL_COMPARISON_OUTPUT_DIR=/app/output/model_comparison \
+    OLLAMA_BASE_URL=http://localhost:11434
+
+ENTRYPOINT ["python", "scripts/run_model_comparison.py"]
+CMD ["--models", "all", "--doc-types", "all", "--json-logs"]

@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: maharashtra-legal-app
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    env_file:
+      - .env
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      QDRANT_URL: http://qdrant:6333
+    volumes:
+      - ./output:/app/output
+      - ./data:/app/data
+      - ./Maharashtra Legal Document Dataset:/app/Maharashtra Legal Document Dataset:ro
+      - ./Legal Document Templates:/app/Legal Document Templates:ro
+    depends_on:
+      ollama:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: maharashtra-ollama
+    ports:
+      - "${LLM_API_PORT:-11434}:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: maharashtra-qdrant
+    profiles:
+      - qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
+  qdrant_storage:

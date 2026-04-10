@@ -1,0 +1,39 @@
+# Exclude secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Exclude output and generated files
+output/
+*.log
+
+# Exclude dev/test artifacts
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+
+# Exclude IDE files
+.vscode/
+.idea/
+
+# Exclude git
+.git/
+.gitignore
+
+# Exclude large dataset (mount as volume in production)
+Maharashtra\ Legal\ Document\ Dataset/
+Legal\ Document\ Templates/
+
+# Exclude Kiro spec files (not needed in container)
+.kiro/
+
+# Exclude model weights
+*.gguf
+*.bin
+*.safetensors

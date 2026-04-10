@@ -1,0 +1,583 @@
+[
+  {
+    "query_id": "sale_deed_urban",
+    "doc_type": "sale_deed",
+    "intake": {
+      "seller_name": "Ramesh Vitthal Kulkarni",
+      "seller_address": "Flat No. 12, Shivaji Nagar, Pune - 411005",
+      "buyer_name": "Sunita Prakash Deshmukh",
+      "buyer_address": "Plot No. 45, Kothrud, Pune - 411038",
+      "survey_number": "123/4A",
+      "area_sqm": 250,
+      "village": "Shivajinagar",
+      "taluka": "Haveli",
+      "district": "Pune",
+      "encumbrance": true,
+      "consideration_amount": 7500000,
+      "payment_mode": "RTGS/NEFT",
+      "advance_paid": 500000,
+      "execution_date": "2026-03-20",
+      "registration_office": "Sub-Registrar, Haveli No. 1, Pune",
+      "witness_1_name": "Anil Kumar Joshi",
+      "witness_2_name": "Priya Suresh Patil"
+    },
+    "ocr_fields": {
+      "Survey_Number": "123/4A",
+      "owner_name": "Ramesh Vitthal Kulkarni",
+      "area": "250 sq.m."
+    }
+  },
+  {
+    "query_id": "sale_deed_rural",
+    "doc_type": "sale_deed",
+    "intake": {
+      "seller_name": "Dnyaneshwar Bhimrao Jadhav",
+      "seller_address": "Gat No. 88, Shirur, Pune - 412210",
+      "buyer_name": "Santosh Ramchandra Bhosale",
+      "buyer_address": "At Post Shirur, Taluka Shirur, Pune - 412210",
+      "survey_number": "Gat No. 88",
+      "area_sqm": 4000,
+      "village": "Shirur",
+      "taluka": "Shirur",
+      "district": "Pune",
+      "encumbrance": true,
+      "consideration_amount": 3200000,
+      "payment_mode": "Cheque",
+      "advance_paid": 200000,
+      "execution_date": "2026-04-10",
+      "registration_office": "Sub-Registrar, Shirur, Pune",
+      "witness_1_name": "Kiran Vitthal Mane",
+      "witness_2_name": "Sushila Ganesh Shinde"
+    },
+    "ocr_fields": {
+      "Survey_Number": "Gat No. 88",
+      "owner_name": "Dnyaneshwar Bhimrao Jadhav",
+      "area": "4000 sq.m."
+    }
+  },
+  {
+    "query_id": "sale_deed_edge",
+    "doc_type": "sale_deed",
+    "intake": {
+      "seller_name": "Priya Anil Mehta",
+      "seller_address": "Flat 1204, Oberoi Realty Tower, Goregaon East, Mumbai - 400063",
+      "buyer_name": "Vikram Suresh Nair",
+      "buyer_address": "B-304, Lodha Palava, Dombivli, Thane - 421204",
+      "survey_number": "CTS 1045/B",
+      "area_sqm": 95,
+      "village": "Goregaon",
+      "taluka": "Borivali",
+      "district": "Mumbai",
+      "encumbrance": false,
+      "encumbrance_details": "Property subject to existing equitable mortgage with HDFC Bank; NOC obtained",
+      "consideration_amount": 18500000,
+      "payment_mode": "Part cash / Part RTGS",
+      "advance_paid": 1000000,
+      "execution_date": "2026-05-01",
+      "registration_office": "Sub-Registrar, Borivali, Mumbai",
+      "witness_1_name": "Rahul Deepak Sharma",
+      "witness_2_name": "Neha Rajesh Iyer"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 1045/B",
+      "owner_name": "Priya Anil Mehta",
+      "area": "95 sq.m."
+    }
+  },
+  {
+    "query_id": "mortgage_deed_urban",
+    "doc_type": "mortgage_deed",
+    "intake": {
+      "mortgagor_name": "Vijay Shankar Pawar",
+      "mortgagor_address": "House No. 7, Deccan Gymkhana, Pune - 411004",
+      "mortgagee_name": "State Bank of India, Pune Main Branch",
+      "mortgagee_address": "SBI Main Branch, Laxmi Road, Pune - 411030",
+      "survey_number": "456/2B",
+      "area_sqm": 180,
+      "village": "Deccan",
+      "taluka": "Haveli",
+      "district": "Pune",
+      "loan_amount": 5000000,
+      "interest_rate": 8.5,
+      "repayment_period_months": 240,
+      "emi_amount": 43391,
+      "mortgage_type": "Equitable Mortgage",
+      "possession_transfer": false,
+      "execution_date": "2026-03-20",
+      "witness_1_name": "Suresh Narayan Bhosale",
+      "witness_2_name": "Kavita Mohan Shinde"
+    },
+    "ocr_fields": {
+      "Survey_Number": "456/2B",
+      "owner_name": "Vijay Shankar Pawar",
+      "area": "180 sq.m."
+    }
+  },
+  {
+    "query_id": "mortgage_deed_rural",
+    "doc_type": "mortgage_deed",
+    "intake": {
+      "mortgagor_name": "Baburao Tukaram Gaikwad",
+      "mortgagor_address": "Gat No. 112, Indapur, Pune - 413106",
+      "mortgagee_name": "District Central Co-operative Bank, Indapur",
+      "mortgagee_address": "Main Road, Indapur, Pune - 413106",
+      "survey_number": "Gat No. 112",
+      "area_sqm": 8000,
+      "village": "Indapur",
+      "taluka": "Indapur",
+      "district": "Pune",
+      "loan_amount": 1500000,
+      "interest_rate": 9.0,
+      "repayment_period_months": 84,
+      "emi_amount": 23500,
+      "mortgage_type": "Simple Mortgage",
+      "possession_transfer": false,
+      "execution_date": "2026-04-15",
+      "witness_1_name": "Pandurang Vishnu Kale",
+      "witness_2_name": "Rekha Suresh Patil"
+    },
+    "ocr_fields": {
+      "Survey_Number": "Gat No. 112",
+      "owner_name": "Baburao Tukaram Gaikwad",
+      "area": "8000 sq.m."
+    }
+  },
+  {
+    "query_id": "mortgage_deed_edge",
+    "doc_type": "mortgage_deed",
+    "intake": {
+      "mortgagor_name": "Ashok Ramesh Kulkarni",
+      "mortgagor_address": "Flat 802, Hiranandani Gardens, Powai, Mumbai - 400076",
+      "mortgagee_name": "HDFC Bank Limited, Powai Branch",
+      "mortgagee_address": "HDFC Bank, Hiranandani Business Park, Powai, Mumbai - 400076",
+      "survey_number": "CTS 789/C",
+      "area_sqm": 120,
+      "village": "Powai",
+      "taluka": "Andheri",
+      "district": "Mumbai",
+      "loan_amount": 12000000,
+      "interest_rate": 8.75,
+      "repayment_period_months": 300,
+      "emi_amount": 95000,
+      "mortgage_type": "English Mortgage",
+      "possession_transfer": true,
+      "execution_date": "2026-05-10",
+      "witness_1_name": "Sanjay Mohan Tiwari",
+      "witness_2_name": "Anita Deepak Nair"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 789/C",
+      "owner_name": "Ashok Ramesh Kulkarni",
+      "area": "120 sq.m."
+    }
+  },
+  {
+    "query_id": "power_of_attorney_urban",
+    "doc_type": "power_of_attorney",
+    "intake": {
+      "principal_name": "Meena Rajesh Joshi",
+      "principal_address": "Bungalow No. 3, Model Colony, Pune - 411016",
+      "attorney_name": "Rajesh Mohan Joshi",
+      "attorney_address": "Bungalow No. 3, Model Colony, Pune - 411016",
+      "relationship": "Husband",
+      "poa_type": "Special Power of Attorney",
+      "powers_granted": ["Sell property", "Execute documents", "Register documents", "Receive payments"],
+      "specific_instructions": "Limited to the sale of Survey No. 789/1, Kothrud, Pune only",
+      "effective_date": "2026-03-20",
+      "is_limited_duration": true,
+      "expiry_date": "2027-03-20",
+      "revocation_conditions": "This POA shall stand revoked upon completion of the sale transaction",
+      "survey_number": "789/1",
+      "village": "Kothrud",
+      "district": "Pune",
+      "witness_1_name": "Deepak Ramesh Kulkarni",
+      "witness_2_name": "Anita Suresh Deshpande"
+    },
+    "ocr_fields": {
+      "Survey_Number": "789/1",
+      "owner_name": "Meena Rajesh Joshi"
+    }
+  },
+  {
+    "query_id": "power_of_attorney_rural",
+    "doc_type": "power_of_attorney",
+    "intake": {
+      "principal_name": "Laxman Vitthal Deshmukh",
+      "principal_address": "At Post Baramati, Taluka Baramati, Pune - 413102",
+      "attorney_name": "Sunil Laxman Deshmukh",
+      "attorney_address": "Flat 201, Shivaji Nagar, Pune - 411005",
+      "relationship": "Son",
+      "poa_type": "General Power of Attorney",
+      "powers_granted": ["Sell property", "Lease property", "Collect rent", "Execute documents", "Register documents"],
+      "specific_instructions": "Authority to manage all agricultural lands in Baramati taluka",
+      "effective_date": "2026-04-01",
+      "is_limited_duration": false,
+      "revocation_conditions": "Revocable at will by the Principal",
+      "survey_number": "Gat No. 55",
+      "village": "Baramati",
+      "district": "Pune",
+      "witness_1_name": "Ganesh Narayan Pawar",
+      "witness_2_name": "Savita Ramesh Bhosale"
+    },
+    "ocr_fields": {
+      "Survey_Number": "Gat No. 55",
+      "owner_name": "Laxman Vitthal Deshmukh"
+    }
+  },
+  {
+    "query_id": "power_of_attorney_edge",
+    "doc_type": "power_of_attorney",
+    "intake": {
+      "principal_name": "Nirmala Suresh Iyer",
+      "principal_address": "Flat 1501, Lodha World Towers, Lower Parel, Mumbai - 400013",
+      "attorney_name": "Advocate Prashant Ramesh Gokhale",
+      "attorney_address": "Chamber 45, High Court Annexe, Fort, Mumbai - 400001",
+      "relationship": "Advocate",
+      "poa_type": "Special Power of Attorney",
+      "powers_granted": ["Litigate / appear in court", "Execute documents", "Mortgage property"],
+      "specific_instructions": "Special POA for mortgage of CTS 2345/A, Lower Parel and related litigation only",
+      "effective_date": "2026-05-15",
+      "is_limited_duration": true,
+      "expiry_date": "2027-05-15",
+      "revocation_conditions": "Revoked upon final disposal of the mortgage transaction and related litigation",
+      "survey_number": "CTS 2345/A",
+      "village": "Lower Parel",
+      "district": "Mumbai",
+      "witness_1_name": "Ravi Shankar Menon",
+      "witness_2_name": "Deepa Anil Pillai"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 2345/A",
+      "owner_name": "Nirmala Suresh Iyer"
+    }
+  },
+  {
+    "query_id": "leave_and_license_urban",
+    "doc_type": "leave_and_license",
+    "intake": {
+      "licensor_name": "Prakash Dattatray Gokhale",
+      "licensor_address": "Flat No. 501, Aundh, Pune - 411007",
+      "licensee_name": "Rohit Sunil Mehta",
+      "licensee_address": "Room No. 12, Shivajinagar, Pune - 411005",
+      "premises_address": "Flat No. 501, 5th Floor, Sai Residency, Aundh, Pune - 411007",
+      "premises_area_sqft": 850,
+      "survey_number": "CTS 234/A",
+      "district": "Pune",
+      "monthly_license_fee": 25000,
+      "security_deposit": 75000,
+      "lock_in_period_months": 6,
+      "commencement_date": "2026-04-01",
+      "agreement_duration_months": 11,
+      "notice_period_days": 30,
+      "permitted_use": "Residential",
+      "maintenance_responsibility": "Licensor",
+      "subletting_allowed": false,
+      "witness_1_name": "Nilesh Pramod Wagh",
+      "witness_2_name": "Smita Anil Kadam"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 234/A",
+      "owner_name": "Prakash Dattatray Gokhale"
+    }
+  },
+  {
+    "query_id": "leave_and_license_rural",
+    "doc_type": "leave_and_license",
+    "intake": {
+      "licensor_name": "Ramabai Shankar Patil",
+      "licensor_address": "Plot No. 12, Nashik Road, Nashik - 422101",
+      "licensee_name": "Mahesh Govind Kulkarni",
+      "licensee_address": "Room No. 5, Nashik Road, Nashik - 422101",
+      "premises_address": "Shop No. 3, Ground Floor, Patil Complex, Nashik Road, Nashik - 422101",
+      "premises_area_sqft": 400,
+      "survey_number": "CTS 88/B",
+      "district": "Nashik",
+      "monthly_license_fee": 8000,
+      "security_deposit": 24000,
+      "lock_in_period_months": 3,
+      "commencement_date": "2026-05-01",
+      "agreement_duration_months": 11,
+      "notice_period_days": 30,
+      "permitted_use": "Commercial",
+      "maintenance_responsibility": "Licensee",
+      "subletting_allowed": false,
+      "witness_1_name": "Vijay Narayan Shinde",
+      "witness_2_name": "Sunanda Ramesh Jadhav"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 88/B",
+      "owner_name": "Ramabai Shankar Patil"
+    }
+  },
+  {
+    "query_id": "leave_and_license_edge",
+    "doc_type": "leave_and_license",
+    "intake": {
+      "licensor_name": "Oberoi Realty Limited",
+      "licensor_address": "Commerz II, International Business Park, Oberoi Garden City, Goregaon East, Mumbai - 400063",
+      "licensee_name": "TechSoft Solutions Private Limited",
+      "licensee_address": "Unit 1204, Oberoi Commerz, Goregaon East, Mumbai - 400063",
+      "premises_address": "Unit 1204, 12th Floor, Oberoi Commerz II, Goregaon East, Mumbai - 400063",
+      "premises_area_sqft": 5000,
+      "survey_number": "CTS 1200/D",
+      "district": "Mumbai",
+      "monthly_license_fee": 500000,
+      "security_deposit": 3000000,
+      "lock_in_period_months": 12,
+      "commencement_date": "2026-06-01",
+      "agreement_duration_months": 36,
+      "notice_period_days": 90,
+      "permitted_use": "Commercial - IT/ITES Office",
+      "maintenance_responsibility": "Licensor",
+      "subletting_allowed": false,
+      "witness_1_name": "Arun Deepak Mehta",
+      "witness_2_name": "Pooja Suresh Nair"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 1200/D",
+      "owner_name": "Oberoi Realty Limited"
+    }
+  },
+  {
+    "query_id": "gift_deed_urban",
+    "doc_type": "gift_deed",
+    "intake": {
+      "donor_name": "Shantabai Narayan Patil",
+      "donor_address": "Gat No. 45, Wagholi, Pune - 412207",
+      "donee_name": "Sachin Narayan Patil",
+      "donee_address": "Gat No. 45, Wagholi, Pune - 412207",
+      "relationship": "Son",
+      "survey_number": "Gat No. 45",
+      "area_sqm": 1200,
+      "village": "Wagholi",
+      "taluka": "Haveli",
+      "district": "Pune",
+      "is_conditional_gift": false,
+      "donee_acceptance": true,
+      "possession_delivery_date": "2026-03-20",
+      "execution_date": "2026-03-20",
+      "witness_1_name": "Ganesh Vitthal Mane",
+      "witness_2_name": "Lata Suresh Jadhav"
+    },
+    "ocr_fields": {
+      "Survey_Number": "Gat No. 45",
+      "owner_name": "Shantabai Narayan Patil",
+      "area": "1200 sq.m."
+    }
+  },
+  {
+    "query_id": "gift_deed_rural",
+    "doc_type": "gift_deed",
+    "intake": {
+      "donor_name": "Vitthal Pandurang Kale",
+      "donor_address": "Gat No. 210, Solapur Road, Barshi, Solapur - 413401",
+      "donee_name": "Mangal Vitthal Kale",
+      "donee_address": "Gat No. 210, Solapur Road, Barshi, Solapur - 413401",
+      "relationship": "Daughter",
+      "survey_number": "Gat No. 210",
+      "area_sqm": 6000,
+      "village": "Barshi",
+      "taluka": "Barshi",
+      "district": "Solapur",
+      "is_conditional_gift": false,
+      "donee_acceptance": true,
+      "possession_delivery_date": "2026-04-20",
+      "execution_date": "2026-04-20",
+      "witness_1_name": "Ramesh Bhimrao Jadhav",
+      "witness_2_name": "Sunita Govind Shinde"
+    },
+    "ocr_fields": {
+      "Survey_Number": "Gat No. 210",
+      "owner_name": "Vitthal Pandurang Kale",
+      "area": "6000 sq.m."
+    }
+  },
+  {
+    "query_id": "gift_deed_edge",
+    "doc_type": "gift_deed",
+    "intake": {
+      "donor_name": "Suresh Ramchandra Deshpande",
+      "donor_address": "Flat 304, Raheja Residency, Bandra West, Mumbai - 400050",
+      "donee_name": "Charitable Trust for Education, Mumbai",
+      "donee_address": "Trust Office, 12 Linking Road, Bandra West, Mumbai - 400050",
+      "relationship": "Charitable Organisation",
+      "survey_number": "CTS 567/E",
+      "area_sqm": 300,
+      "village": "Bandra",
+      "taluka": "Andheri",
+      "district": "Mumbai",
+      "is_conditional_gift": true,
+      "gift_conditions_text": "The property shall be used exclusively for educational purposes; if used otherwise, the gift shall stand revoked",
+      "donee_acceptance": true,
+      "possession_delivery_date": "2026-06-01",
+      "execution_date": "2026-06-01",
+      "witness_1_name": "Anil Mohan Sharma",
+      "witness_2_name": "Priya Deepak Iyer"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 567/E",
+      "owner_name": "Suresh Ramchandra Deshpande",
+      "area": "300 sq.m."
+    }
+  },
+  {
+    "query_id": "conveyance_deed_urban",
+    "doc_type": "conveyance_deed",
+    "intake": {
+      "developer_name": "Godrej Properties Limited",
+      "developer_address": "Godrej One, Pirojshanagar, Vikhroli East, Mumbai - 400079",
+      "society_name": "Godrej Emerald Co-operative Housing Society Ltd.",
+      "purchaser_name": "Amit Suresh Sharma",
+      "purchaser_address": "Flat No. 1204, Tower A, Godrej Emerald, Thane - 400601",
+      "flat_unit_number": "1204",
+      "floor_number": "12",
+      "building_name": "Tower A, Godrej Emerald",
+      "carpet_area_sqft": 750,
+      "built_up_area_sqft": 920,
+      "survey_number": "CTS 567/B",
+      "village": "Kolshet",
+      "district": "Thane",
+      "maharera_number": "P51700012345",
+      "oc_status": "OC Received",
+      "oc_date": "2025-06-15",
+      "consideration_amount": 12500000,
+      "stamp_duty_paid": 750000,
+      "execution_date": "2026-03-20",
+      "witness_1_name": "Ravi Mohan Tiwari",
+      "witness_2_name": "Pooja Anil Nair"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 567/B",
+      "owner_name": "Godrej Properties Limited"
+    }
+  },
+  {
+    "query_id": "conveyance_deed_rural",
+    "doc_type": "conveyance_deed",
+    "intake": {
+      "developer_name": "Nashik Developers Private Limited",
+      "developer_address": "Plot 5, MIDC, Satpur, Nashik - 422007",
+      "society_name": "Nashik Green Valley Co-operative Housing Society Ltd.",
+      "purchaser_name": "Suresh Vitthal Kulkarni",
+      "purchaser_address": "Flat 102, Block B, Green Valley, Satpur, Nashik - 422007",
+      "flat_unit_number": "102",
+      "floor_number": "1",
+      "building_name": "Block B, Green Valley",
+      "carpet_area_sqft": 600,
+      "built_up_area_sqft": 750,
+      "survey_number": "CTS 345/F",
+      "village": "Satpur",
+      "district": "Nashik",
+      "maharera_number": "P99700034567",
+      "oc_status": "OC Received",
+      "oc_date": "2025-09-01",
+      "consideration_amount": 4500000,
+      "stamp_duty_paid": 270000,
+      "execution_date": "2026-04-25",
+      "witness_1_name": "Mohan Ramesh Patil",
+      "witness_2_name": "Kavita Suresh Bhosale"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 345/F",
+      "owner_name": "Nashik Developers Private Limited"
+    }
+  },
+  {
+    "query_id": "conveyance_deed_edge",
+    "doc_type": "conveyance_deed",
+    "intake": {
+      "developer_name": "Lodha Developers Limited",
+      "developer_address": "Lodha Excelus, N.M. Joshi Marg, Mahalaxmi, Mumbai - 400011",
+      "society_name": "Lodha Palava City Phase 2 Co-operative Housing Society Ltd.",
+      "purchaser_name": "Rajesh Mohan Mehta",
+      "purchaser_address": "Flat 2501, Tower C, Lodha Palava, Dombivli East, Thane - 421204",
+      "flat_unit_number": "2501",
+      "floor_number": "25",
+      "building_name": "Tower C, Lodha Palava Phase 2",
+      "carpet_area_sqft": 1100,
+      "built_up_area_sqft": 1350,
+      "survey_number": "CTS 890/G",
+      "village": "Dombivli",
+      "district": "Thane",
+      "maharera_number": "P51600056789",
+      "oc_status": "OC Received",
+      "oc_date": "2025-12-01",
+      "consideration_amount": 22000000,
+      "stamp_duty_paid": 1320000,
+      "execution_date": "2026-06-15",
+      "witness_1_name": "Deepak Anil Sharma",
+      "witness_2_name": "Sunita Ramesh Iyer"
+    },
+    "ocr_fields": {
+      "Survey_Number": "CTS 890/G",
+      "owner_name": "Lodha Developers Limited"
+    }
+  },
+  {
+    "query_id": "affidavit_urban",
+    "doc_type": "affidavit",
+    "intake": {
+      "deponent_name": "Kavita Ramesh Deshpande",
+      "deponent_age": 42,
+      "deponent_occupation": "Teacher",
+      "deponent_address": "Flat No. 8, Prabhat Road, Pune - 411004",
+      "affidavit_purpose": "Property Ownership",
+      "authority_to_whom": "Sub-Registrar, Pune",
+      "statement_1": "I am the absolute owner of the property bearing Survey No. 321/C, situated at Prabhat Road, Pune, Taluka Haveli, District Pune.",
+      "statement_2": "The said property was purchased by me vide Sale Deed dated 15 January 2020, registered at Sub-Registrar Office, Haveli No. 2, Pune.",
+      "statement_3": "The said property is free from all encumbrances, charges, mortgages, and litigation.",
+      "notarisation_authority": "Notary Public",
+      "place_of_execution": "Pune",
+      "execution_date": "2026-03-20"
+    },
+    "ocr_fields": {
+      "Survey_Number": "321/C",
+      "owner_name": "Kavita Ramesh Deshpande"
+    }
+  },
+  {
+    "query_id": "affidavit_rural",
+    "doc_type": "affidavit",
+    "intake": {
+      "deponent_name": "Bhimrao Shankar Jadhav",
+      "deponent_age": 58,
+      "deponent_occupation": "Farmer",
+      "deponent_address": "Gat No. 33, Phaltan, Satara - 415523",
+      "affidavit_purpose": "Property Ownership",
+      "authority_to_whom": "Tahsildar, Phaltan",
+      "statement_1": "I am the absolute owner of agricultural land bearing Gat No. 33, situated at Phaltan, Taluka Phaltan, District Satara.",
+      "statement_2": "The said land was inherited by me from my father Shankar Bhimrao Jadhav vide registered Will dated 10 March 2015.",
+      "statement_3": "The said land is free from all encumbrances and no litigation is pending in respect thereof.",
+      "notarisation_authority": "Executive Magistrate",
+      "place_of_execution": "Phaltan",
+      "execution_date": "2026-04-05"
+    },
+    "ocr_fields": {
+      "Survey_Number": "Gat No. 33",
+      "owner_name": "Bhimrao Shankar Jadhav"
+    }
+  },
+  {
+    "query_id": "affidavit_edge",
+    "doc_type": "affidavit",
+    "intake": {
+      "deponent_name": "Sunita Anil Mehta",
+      "deponent_age": 35,
+      "deponent_occupation": "Software Engineer",
+      "deponent_address": "Flat 1102, Hiranandani Estate, Thane West - 400607",
+      "affidavit_purpose": "Name Correction",
+      "authority_to_whom": "Passport Office, Mumbai",
+      "statement_1": "My name is Sunita Anil Mehta as per my Aadhaar Card and PAN Card.",
+      "statement_2": "In my school leaving certificate, my name was incorrectly recorded as Sunita Anil Mehta-Shah due to a clerical error.",
+      "statement_3": "Both names refer to the same person, i.e., myself, and I am the same individual.",
+      "statement_4": "I am making this affidavit for the purpose of correction of name in my passport application.",
+      "notarisation_authority": "Notary Public",
+      "place_of_execution": "Thane",
+      "execution_date": "2026-05-20"
+    },
+    "ocr_fields": {
+      "Survey_Number": "N/A",
+      "owner_name": "Sunita Anil Mehta"
+    }
+  }
+]

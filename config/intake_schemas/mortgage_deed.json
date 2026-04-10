@@ -1,0 +1,157 @@
+{
+  "document_type": "mortgage_deed",
+  "display_name": "Mortgage Deed",
+  "sections": [
+    {
+      "title": "Parties",
+      "fields": [
+        {
+          "id": "mortgagor_name",
+          "label": "Full name of Mortgagor (Borrower)",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "The person mortgaging the property"
+        },
+        {
+          "id": "mortgagor_address",
+          "label": "Mortgagor's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "mortgagee_name",
+          "label": "Full name of Mortgagee (Lender)",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "The bank, NBFC, or individual providing the loan"
+        },
+        {
+          "id": "mortgagee_address",
+          "label": "Mortgagee's address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Property Details",
+      "fields": [
+        {
+          "id": "survey_number",
+          "label": "Survey / CTS Number",
+          "type": "text",
+          "required": true,
+          "ocr_source": "Survey_Number"
+        },
+        {
+          "id": "area_sqm",
+          "label": "Total area (sq. metres)",
+          "type": "number",
+          "required": true,
+          "ocr_source": "area"
+        },
+        {
+          "id": "village",
+          "label": "Village / Locality",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "taluka",
+          "label": "Taluka",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "district",
+          "label": "District",
+          "type": "select",
+          "required": true,
+          "options": ["Pune", "Mumbai", "Thane", "Nashik", "Nagpur", "Aurangabad", "Solapur", "Kolhapur", "Satara", "Sangli", "Other"],
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Loan Terms",
+      "fields": [
+        {
+          "id": "loan_amount",
+          "label": "Principal loan amount (₹)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "interest_rate",
+          "label": "Rate of interest (% per annum)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "repayment_period_months",
+          "label": "Repayment period (months)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "emi_amount",
+          "label": "Monthly EMI amount (₹)",
+          "type": "number",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "mortgage_type",
+          "label": "Type of mortgage",
+          "type": "select",
+          "required": true,
+          "options": ["Simple Mortgage", "Equitable Mortgage", "English Mortgage", "Usufructuary Mortgage"],
+          "ocr_source": null,
+          "help": "Simple: no possession transfer; Equitable: deposit of title deeds; English: possession transferred"
+        },
+        {
+          "id": "possession_transfer",
+          "label": "Is possession of property transferred to mortgagee?",
+          "type": "boolean",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "execution_date",
+          "label": "Date of execution",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Witnesses",
+      "fields": [
+        {
+          "id": "witness_1_name",
+          "label": "Witness 1 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "witness_2_name",
+          "label": "Witness 2 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+document_type: sale_deed
+priority_order:
+  - name: Transfer of Property Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 1000
+    section_hint: "54-57"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "17, 23"
+  - name: Indian Contract Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "10-25"
+  - name: Maharashtra Stamp Act, 1958
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Article 25, Schedule I"
+    priority: high
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 3000
+    section_hint: "149-153"
+    priority: low
+  - name: Indian Stamp Act, 1899
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "3"
+    priority: low
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 500
+    section_hint: "24"
+    priority: low
+  - name: BHC Judgment - Sale Deed Validity 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_7_Prabhadevi_Pursuant.docx
+    tokens: 3200
+    section_hint: "TPA s.54 sale deed validity"
+    priority: low
+  - name: BHC Judgment - Title Transfer Dispute 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_13_Agricultural_Baramati.docx
+    tokens: 2900
+    section_hint: "TPA s.54-55 title transfer"
+    priority: low
+  - name: BHC Judgment - Stamp Duty Sale Deed 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_14_Urban_Bungalow_Aurangabad.docx
+    tokens: 3100
+    section_hint: "Maharashtra Stamp Act Article 25 stamp duty"
+    priority: low

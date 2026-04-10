@@ -1,0 +1,177 @@
+{
+  "document_type": "leave_and_license",
+  "display_name": "Leave and License Agreement",
+  "sections": [
+    {
+      "title": "Parties",
+      "fields": [
+        {
+          "id": "licensor_name",
+          "label": "Full name of Licensor (Owner)",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "The property owner granting the license"
+        },
+        {
+          "id": "licensor_address",
+          "label": "Licensor's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "licensee_name",
+          "label": "Full name of Licensee (Occupant)",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "The person being granted the license to occupy"
+        },
+        {
+          "id": "licensee_address",
+          "label": "Licensee's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Premises Details",
+      "fields": [
+        {
+          "id": "premises_address",
+          "label": "Full address of licensed premises",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null,
+          "help": "Complete address including flat/unit no., building, street, area, city, PIN"
+        },
+        {
+          "id": "premises_area_sqft",
+          "label": "Carpet area of premises (sq. ft.)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "survey_number",
+          "label": "Survey / CTS Number",
+          "type": "text",
+          "required": false,
+          "ocr_source": "Survey_Number"
+        },
+        {
+          "id": "district",
+          "label": "District",
+          "type": "select",
+          "required": true,
+          "options": ["Pune", "Mumbai", "Thane", "Nashik", "Nagpur", "Aurangabad", "Solapur", "Kolhapur", "Satara", "Sangli", "Other"],
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Financial Terms",
+      "fields": [
+        {
+          "id": "monthly_license_fee",
+          "label": "Monthly license fee (₹)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "security_deposit",
+          "label": "Security deposit (₹)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "lock_in_period_months",
+          "label": "Lock-in period (months)",
+          "type": "number",
+          "required": false,
+          "ocr_source": null,
+          "help": "Minimum period before either party can terminate"
+        }
+      ]
+    },
+    {
+      "title": "Duration",
+      "fields": [
+        {
+          "id": "commencement_date",
+          "label": "Commencement date",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "agreement_duration_months",
+          "label": "Agreement duration (months)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "notice_period_days",
+          "label": "Notice period for termination (days)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null,
+          "help": "Number of days' notice required by either party to terminate"
+        }
+      ]
+    },
+    {
+      "title": "Permitted Use",
+      "fields": [
+        {
+          "id": "permitted_use",
+          "label": "Permitted use of premises",
+          "type": "select",
+          "required": true,
+          "options": ["Residential", "Commercial", "Mixed (Residential + Commercial)"],
+          "ocr_source": null
+        },
+        {
+          "id": "maintenance_responsibility",
+          "label": "Maintenance responsibility",
+          "type": "select",
+          "required": true,
+          "options": ["Licensor", "Licensee", "Shared"],
+          "ocr_source": null
+        },
+        {
+          "id": "subletting_allowed",
+          "label": "Is subletting / sub-licensing allowed?",
+          "type": "boolean",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Witnesses",
+      "fields": [
+        {
+          "id": "witness_1_name",
+          "label": "Witness 1 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "witness_2_name",
+          "label": "Witness 2 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "document_type": "conveyance_deed",
+  "display_name": "Conveyance Deed",
+  "sections": [
+    {
+      "title": "Parties",
+      "fields": [
+        {
+          "id": "developer_name",
+          "label": "Developer / Promoter name",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "Name of the builder or developer conveying the property"
+        },
+        {
+          "id": "developer_address",
+          "label": "Developer's registered address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "society_name",
+          "label": "Co-operative Housing Society name",
+          "type": "text",
+          "required": false,
+          "ocr_source": null,
+          "help": "If conveyance is to a registered society"
+        },
+        {
+          "id": "society_address",
+          "label": "Society's registered address",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null,
+          "help": "Registered office address of the Co-operative Housing Society"
+        },
+        {
+          "id": "purchaser_name",
+          "label": "Purchaser / Flat owner name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "purchaser_address",
+          "label": "Purchaser's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Property Details",
+      "fields": [
+        {
+          "id": "flat_unit_number",
+          "label": "Flat / Unit number",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "floor_number",
+          "label": "Floor number",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "building_name",
+          "label": "Building / Wing name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "carpet_area_sqft",
+          "label": "Carpet area (sq. ft.)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "built_up_area_sqft",
+          "label": "Built-up area (sq. ft.)",
+          "type": "number",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "common_area_share_sqft",
+          "label": "Proportionate share in common areas (sq. ft.)",
+          "type": "number",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "survey_number",
+          "label": "Survey / CTS Number of land",
+          "type": "text",
+          "required": true,
+          "ocr_source": "Survey_Number"
+        },
+        {
+          "id": "village",
+          "label": "Village / Locality",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "district",
+          "label": "District",
+          "type": "select",
+          "required": true,
+          "options": ["Pune", "Mumbai", "Thane", "Nashik", "Nagpur", "Aurangabad", "Solapur", "Kolhapur", "Satara", "Sangli", "Other"],
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Development Context",
+      "fields": [
+        {
+          "id": "maharera_number",
+          "label": "MahaRERA Registration Number",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "e.g. P52100012345"
+        },
+        {
+          "id": "oc_status",
+          "label": "Occupancy Certificate (OC) status",
+          "type": "select",
+          "required": true,
+          "options": ["OC Received", "OC Applied — Pending", "OC Not Yet Applied", "Partial OC"],
+          "ocr_source": null
+        },
+        {
+          "id": "oc_date",
+          "label": "Date of OC (if received)",
+          "type": "date",
+          "required": false,
+          "ocr_source": null,
+          "conditional_on": {"field": "oc_status", "value": "OC Received"}
+        }
+      ]
+    },
+    {
+      "title": "Transaction",
+      "fields": [
+        {
+          "id": "consideration_amount",
+          "label": "Total consideration amount (₹)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "stamp_duty_paid",
+          "label": "Stamp duty paid (₹)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "execution_date",
+          "label": "Date of execution",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Witnesses",
+      "fields": [
+        {
+          "id": "witness_1_name",
+          "label": "Witness 1 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "witness_2_name",
+          "label": "Witness 2 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

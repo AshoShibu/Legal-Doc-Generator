@@ -1,0 +1,57 @@
+document_type: conveyance_deed
+priority_order:
+  - name: Transfer of Property Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 1000
+    section_hint: "54-57"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "17"
+  - name: Maharashtra Ownership Flats Act, 1963
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "3-11"
+  - name: Real Estate (Regulation and Development) Act, 2016
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "3, 11, 18"
+  - name: Maharashtra Stamp Act, 1958
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Article 25, Schedule I (stamp duty on conveyance)"
+    priority: high
+  - name: Indian Contract Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "10-25"
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 3000
+    section_hint: "149-153"
+    priority: low
+  - name: Development Control Regulations, 1991
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "relevant FSI/TDR provisions"
+    priority: low
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 300
+    section_hint: "24"
+    priority: low
+  - name: BHC Judgment - Conveyance Deed Execution 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Arvind_deed of conveyance (Augmented).docx
+    tokens: 3100
+    section_hint: "Maharashtra Ownership Flats Act s.11 deemed conveyance"
+    priority: low
+  - name: BHC Judgment - Developer Conveyance Obligation 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/DEED OF CONVEYANCE(Kamal - augmented).docx
+    tokens: 3400
+    section_hint: "RERA s.11 developer obligations, OC status"
+    priority: low
+  - name: BHC Judgment - Society Conveyance Deed 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Deed of conveyance1 (Augmented and redacted).docx
+    tokens: 2900
+    section_hint: "Maharashtra Ownership Flats Act s.10 society formation and conveyance"
+    priority: low

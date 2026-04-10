@@ -1,0 +1,152 @@
+{
+  "document_type": "gift_deed",
+  "display_name": "Gift Deed",
+  "sections": [
+    {
+      "title": "Parties",
+      "fields": [
+        {
+          "id": "donor_name",
+          "label": "Full name of Donor",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "The person gifting the property"
+        },
+        {
+          "id": "donor_address",
+          "label": "Donor's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "donee_name",
+          "label": "Full name of Donee (Recipient)",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "The person receiving the gift"
+        },
+        {
+          "id": "donee_address",
+          "label": "Donee's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "relationship",
+          "label": "Relationship between Donor and Donee",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "e.g. Father, Mother, Son, Daughter, Spouse, Sibling"
+        }
+      ]
+    },
+    {
+      "title": "Property Details",
+      "fields": [
+        {
+          "id": "survey_number",
+          "label": "Survey / CTS Number",
+          "type": "text",
+          "required": true,
+          "ocr_source": "Survey_Number"
+        },
+        {
+          "id": "area_sqm",
+          "label": "Total area (sq. metres)",
+          "type": "number",
+          "required": true,
+          "ocr_source": "area"
+        },
+        {
+          "id": "village",
+          "label": "Village / Locality",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "taluka",
+          "label": "Taluka",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "district",
+          "label": "District",
+          "type": "select",
+          "required": true,
+          "options": ["Pune", "Mumbai", "Thane", "Nashik", "Nagpur", "Aurangabad", "Solapur", "Kolhapur", "Satara", "Sangli", "Other"],
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Gift Conditions",
+      "fields": [
+        {
+          "id": "is_conditional_gift",
+          "label": "Is this a conditional gift?",
+          "type": "boolean",
+          "required": true,
+          "ocr_source": null,
+          "help": "A conditional gift imposes obligations or conditions on the donee"
+        },
+        {
+          "id": "gift_conditions_text",
+          "label": "Conditions imposed on the Donee",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null,
+          "conditional_on": {"field": "is_conditional_gift", "value": true},
+          "help": "Describe the conditions the donee must fulfil"
+        },
+        {
+          "id": "donee_acceptance",
+          "label": "Has the Donee accepted the gift?",
+          "type": "boolean",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "possession_delivery_date",
+          "label": "Date of delivery of possession",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "execution_date",
+          "label": "Date of execution of deed",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Witnesses",
+      "fields": [
+        {
+          "id": "witness_1_name",
+          "label": "Witness 1 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "witness_2_name",
+          "label": "Witness 2 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

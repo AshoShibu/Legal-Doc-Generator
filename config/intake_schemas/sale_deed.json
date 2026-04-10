@@ -1,0 +1,159 @@
+{
+  "document_type": "sale_deed",
+  "display_name": "Sale Deed",
+  "sections": [
+    {
+      "title": "Parties",
+      "fields": [
+        {
+          "id": "seller_name",
+          "label": "Full name of Seller (Vendor)",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "As it appears on the 7/12 Extract or Property Card"
+        },
+        {
+          "id": "seller_address",
+          "label": "Seller's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "buyer_name",
+          "label": "Full name of Buyer (Vendee)",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "buyer_address",
+          "label": "Buyer's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Property Details",
+      "fields": [
+        {
+          "id": "survey_number",
+          "label": "Survey / CTS Number",
+          "type": "text",
+          "required": true,
+          "ocr_source": "Survey_Number"
+        },
+        {
+          "id": "area_sqm",
+          "label": "Total area (sq. metres)",
+          "type": "number",
+          "required": true,
+          "ocr_source": "area"
+        },
+        {
+          "id": "village",
+          "label": "Village / Locality",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "taluka",
+          "label": "Taluka",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "district",
+          "label": "District",
+          "type": "select",
+          "required": true,
+          "options": ["Pune", "Mumbai", "Thane", "Nashik", "Nagpur", "Aurangabad", "Solapur", "Kolhapur", "Satara", "Sangli", "Other"],
+          "ocr_source": null
+        },
+        {
+          "id": "encumbrance",
+          "label": "Is the property free from all encumbrances?",
+          "type": "boolean",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "encumbrance_details",
+          "label": "Describe the encumbrance",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null,
+          "conditional_on": {"field": "encumbrance", "value": false},
+          "help": "Describe any existing mortgage, lien, or charge on the property"
+        }
+      ]
+    },
+    {
+      "title": "Transaction",
+      "fields": [
+        {
+          "id": "consideration_amount",
+          "label": "Sale consideration (₹)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null,
+          "help": "Total amount agreed between parties"
+        },
+        {
+          "id": "payment_mode",
+          "label": "Mode of payment",
+          "type": "select",
+          "required": true,
+          "options": ["RTGS/NEFT", "Cheque", "Demand Draft", "Cash", "Part cash / Part RTGS"],
+          "ocr_source": null
+        },
+        {
+          "id": "advance_paid",
+          "label": "Advance / token amount already paid (₹)",
+          "type": "number",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "execution_date",
+          "label": "Date of execution",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "registration_office",
+          "label": "Sub-Registrar office for registration",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "e.g. Sub-Registrar, Haveli No. 1, Pune"
+        }
+      ]
+    },
+    {
+      "title": "Witnesses",
+      "fields": [
+        {
+          "id": "witness_1_name",
+          "label": "Witness 1 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "witness_2_name",
+          "label": "Witness 2 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

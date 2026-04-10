@@ -1,0 +1,47 @@
+document_type: leave_and_license
+priority_order:
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 3000
+    section_hint: "24, 55"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "17(1)(d)"
+  - name: Transfer of Property Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "105-117"
+  - name: Indian Contract Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "10-25"
+  - name: Maharashtra Stamp Act, 1958
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Article 36A"
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 2500
+    section_hint: "149-153"
+    priority: low
+  - name: Specific Relief Act, 1963
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "10-14"
+    priority: low
+  - name: BHC Judgment - Leave and License Termination 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_18.docx
+    tokens: 3000
+    section_hint: "Maharashtra Rent Control Act s.24 license period termination"
+    priority: low
+  - name: BHC Judgment - Licensee Eviction Procedure 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_19.docx
+    tokens: 2600
+    section_hint: "Maharashtra Rent Control Act s.55 deemed tenancy prevention"
+    priority: low
+  - name: BHC Judgment - Rent Control vs L&L Agreement 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/MCS Bare Act and Rules.pdf
+    tokens: 3200
+    section_hint: "TPA s.105 lease vs license distinction"
+    priority: low

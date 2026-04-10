@@ -1,0 +1,77 @@
+# Maharashtra Legal Document Generation System — dependencies
+# Versions reflect what is installed on the development machine (Python 3.14, Windows).
+# Pinned versions are omitted for packages that require compilation, to allow
+# pip to select a pre-built wheel for the current Python/platform.
+
+# PDF processing
+PyMuPDF>=1.24.5
+
+# Image processing
+Pillow>=10.4.0
+
+# HTTP client (Ollama + Groq API calls)
+requests>=2.32.3
+
+# Environment variable loading
+python-dotenv>=1.0.1
+
+# Document generation
+python-docx>=1.1.2
+reportlab>=4.2.2
+
+# NLP / NER
+spacy>=3.8.11
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+
+# Configuration
+pyyaml>=6.0.1
+
+# Evaluation metrics
+nltk>=3.9.3
+rouge-score>=0.1.2
+
+# Property-based testing
+hypothesis>=6.103.4
+
+# Testing framework
+pytest>=8.2.2
+
+# API server
+fastapi>=0.116.1
+uvicorn[standard]>=0.35.0
+python-multipart>=0.0.20
+
+# ---------------------------------------------------------------------------
+# Phase 1.5 additions
+# ---------------------------------------------------------------------------
+
+# RAM detection (Model_Registry auto-enables/disables large models)
+psutil>=5.9.8
+
+# Progress bars for model comparison CLI
+tqdm>=4.66.4
+
+# RAGAS — Tier 3 LLM-based evaluation (faithfulness, answer relevancy, etc.)
+ragas
+# RAGAS transitive dependencies (not auto-installed on Python 3.14)
+datasets
+appdirs
+instructor
+
+# OpenAI-compatible client — used by RAGAS LLM factory for Groq inference
+openai
+
+# LangChain community embeddings — used by RAGAS HuggingFaceEmbeddings wrapper
+langchain-community
+
+# Sentence transformers — provides all-MiniLM-L6-v2 embeddings for RAGAS
+sentence-transformers
+
+# Chat backend rate limiting (Area 3)
+slowapi
+# JSON structured logging for CloudWatch / Stackdriver ingestion (--json-logs flag)
+python-json-logger
+# Visualization — research-paper-quality figures from model comparison results
+seaborn
+matplotlib
+pandas

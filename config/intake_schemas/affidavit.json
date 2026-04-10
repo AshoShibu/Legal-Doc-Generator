@@ -1,0 +1,183 @@
+{
+  "document_type": "affidavit",
+  "display_name": "Affidavit",
+  "sections": [
+    {
+      "title": "Deponent",
+      "fields": [
+        {
+          "id": "deponent_name",
+          "label": "Full name of Deponent",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "The person making the affidavit"
+        },
+        {
+          "id": "deponent_age",
+          "label": "Age of Deponent (years)",
+          "type": "number",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "deponent_occupation",
+          "label": "Occupation",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "deponent_address",
+          "label": "Permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Purpose",
+      "fields": [
+        {
+          "id": "affidavit_purpose",
+          "label": "Purpose of affidavit",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Property Ownership",
+            "Name Correction",
+            "Income Declaration",
+            "Address Proof",
+            "Date of Birth Proof",
+            "Marital Status",
+            "Loss of Document",
+            "Other"
+          ],
+          "ocr_source": null
+        },
+        {
+          "id": "purpose_other_details",
+          "label": "Describe the purpose",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null,
+          "conditional_on": {"field": "affidavit_purpose", "value": "Other"},
+          "help": "Provide details of the specific purpose"
+        },
+        {
+          "id": "authority_to_whom",
+          "label": "Authority / office to whom submitted",
+          "type": "text",
+          "required": false,
+          "ocr_source": null,
+          "help": "e.g. Sub-Registrar, Pune; Passport Office; Bank"
+        }
+      ]
+    },
+    {
+      "title": "Statements",
+      "fields": [
+        {
+          "id": "statement_1",
+          "label": "Statement 1",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null,
+          "help": "First factual statement to be sworn"
+        },
+        {
+          "id": "statement_2",
+          "label": "Statement 2",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_3",
+          "label": "Statement 3",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_4",
+          "label": "Statement 4",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_5",
+          "label": "Statement 5",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_6",
+          "label": "Statement 6",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_7",
+          "label": "Statement 7",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_8",
+          "label": "Statement 8",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_9",
+          "label": "Statement 9",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "statement_10",
+          "label": "Statement 10",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Notarisation",
+      "fields": [
+        {
+          "id": "notarisation_authority",
+          "label": "Sworn before",
+          "type": "select",
+          "required": true,
+          "options": ["Notary Public", "Executive Magistrate", "Oath Commissioner"],
+          "ocr_source": null
+        },
+        {
+          "id": "place_of_execution",
+          "label": "Place of execution",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "City/town where the affidavit is being sworn"
+        },
+        {
+          "id": "execution_date",
+          "label": "Date of execution",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

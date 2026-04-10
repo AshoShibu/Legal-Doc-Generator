@@ -1,0 +1,171 @@
+{
+  "document_type": "power_of_attorney",
+  "display_name": "Power of Attorney",
+  "sections": [
+    {
+      "title": "Parties",
+      "fields": [
+        {
+          "id": "principal_name",
+          "label": "Full name of Principal (Grantor)",
+          "type": "text",
+          "required": true,
+          "ocr_source": "owner_name",
+          "help": "The person granting the power of attorney"
+        },
+        {
+          "id": "principal_address",
+          "label": "Principal's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "attorney_name",
+          "label": "Full name of Attorney (Agent)",
+          "type": "text",
+          "required": true,
+          "ocr_source": null,
+          "help": "The person being granted the power of attorney"
+        },
+        {
+          "id": "attorney_address",
+          "label": "Attorney's permanent address",
+          "type": "textarea",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "relationship",
+          "label": "Relationship between Principal and Attorney",
+          "type": "text",
+          "required": false,
+          "ocr_source": null,
+          "help": "e.g. Son, Daughter, Spouse, Friend, Advocate"
+        }
+      ]
+    },
+    {
+      "title": "Scope of Authority",
+      "fields": [
+        {
+          "id": "poa_type",
+          "label": "Type of Power of Attorney",
+          "type": "select",
+          "required": true,
+          "options": ["General Power of Attorney", "Special Power of Attorney"],
+          "ocr_source": null,
+          "help": "General: broad authority; Special: limited to specific acts"
+        },
+        {
+          "id": "powers_granted",
+          "label": "Powers granted to Attorney",
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            "Sell property",
+            "Purchase property",
+            "Lease property",
+            "Mortgage property",
+            "Litigate / appear in court",
+            "Collect rent",
+            "Execute documents",
+            "Manage bank accounts",
+            "Register documents",
+            "Receive payments"
+          ],
+          "ocr_source": null
+        },
+        {
+          "id": "specific_instructions",
+          "label": "Specific instructions or limitations",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null,
+          "help": "Any restrictions or specific conditions on the powers granted"
+        }
+      ]
+    },
+    {
+      "title": "Duration",
+      "fields": [
+        {
+          "id": "effective_date",
+          "label": "Effective date",
+          "type": "date",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "is_limited_duration",
+          "label": "Is this POA limited in duration?",
+          "type": "boolean",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "expiry_date",
+          "label": "Expiry date",
+          "type": "date",
+          "required": false,
+          "ocr_source": null,
+          "conditional_on": {"field": "is_limited_duration", "value": true}
+        },
+        {
+          "id": "revocation_conditions",
+          "label": "Revocation conditions",
+          "type": "textarea",
+          "required": false,
+          "ocr_source": null,
+          "help": "Conditions under which this POA may be revoked"
+        }
+      ]
+    },
+    {
+      "title": "Property Details (if applicable)",
+      "fields": [
+        {
+          "id": "survey_number",
+          "label": "Survey / CTS Number (if property-related)",
+          "type": "text",
+          "required": false,
+          "ocr_source": "Survey_Number"
+        },
+        {
+          "id": "village",
+          "label": "Village / Locality",
+          "type": "text",
+          "required": false,
+          "ocr_source": null
+        },
+        {
+          "id": "district",
+          "label": "District",
+          "type": "select",
+          "required": false,
+          "options": ["Pune", "Mumbai", "Thane", "Nashik", "Nagpur", "Aurangabad", "Solapur", "Kolhapur", "Satara", "Sangli", "Other"],
+          "ocr_source": null
+        }
+      ]
+    },
+    {
+      "title": "Witnesses",
+      "fields": [
+        {
+          "id": "witness_1_name",
+          "label": "Witness 1 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        },
+        {
+          "id": "witness_2_name",
+          "label": "Witness 2 — Full name",
+          "type": "text",
+          "required": true,
+          "ocr_source": null
+        }
+      ]
+    }
+  ]
+}

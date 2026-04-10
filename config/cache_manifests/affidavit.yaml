@@ -1,0 +1,52 @@
+document_type: affidavit
+priority_order:
+  - name: Code of Civil Procedure, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Order XIX"
+  - name: Oaths Act, 1969
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "3-5"
+  - name: Indian Evidence Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "59-60, 67"
+  - name: Notaries Act, 1952
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "8"
+  - name: Maharashtra Stamp Act, 1958
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "Article 4"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "18-19"
+    priority: low
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 3000
+    section_hint: "149-153"
+    priority: low
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 300
+    section_hint: "24"
+    priority: low
+  - name: BHC Judgment - Affidavit Admissibility 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/AFFIDAVIT Format.docx
+    tokens: 2500
+    section_hint: "CPC Order XIX affidavit admissibility"
+    priority: low
+  - name: BHC Judgment - Sworn Statement Validity 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/mcs220623091433.pdf
+    tokens: 2400
+    section_hint: "Oaths Act s.3 administration of oath, deponent declaration"
+    priority: low
+  - name: BHC Judgment - Affidavit in Property Dispute 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/MCS Bare Act and Rules.pdf
+    tokens: 2600
+    section_hint: "Indian Evidence Act s.67 proof of signature on affidavit"
+    priority: low

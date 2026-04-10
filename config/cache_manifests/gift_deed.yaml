@@ -1,0 +1,52 @@
+document_type: gift_deed
+priority_order:
+  - name: Transfer of Property Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 1200
+    section_hint: "122-129"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "17"
+  - name: Indian Contract Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "10-25"
+  - name: Maharashtra Stamp Act, 1958
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Article 28"
+  - name: Hindu Succession Act, 1956
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "14-15"
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 3000
+    section_hint: "149-153"
+    priority: low
+  - name: Indian Stamp Act, 1899
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "3"
+    priority: low
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 300
+    section_hint: "24"
+    priority: low
+  - name: BHC Judgment - Gift Deed Revocation 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/DOC ( Sunita Augmented).docx
+    tokens: 2900
+    section_hint: "TPA s.126 revocation of gift"
+    priority: low
+  - name: BHC Judgment - Gift to Minor Validity 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/DOC(Urban - Aditya).docx
+    tokens: 2700
+    section_hint: "TPA s.122 acceptance by minor guardian"
+    priority: low
+  - name: BHC Judgment - Conditional Gift Deed 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/DOS 11(Augmented).docx
+    tokens: 3000
+    section_hint: "TPA s.127 onerous gift conditions"
+    priority: low

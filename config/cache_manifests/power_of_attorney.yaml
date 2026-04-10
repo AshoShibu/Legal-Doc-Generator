@@ -1,0 +1,51 @@
+document_type: power_of_attorney
+priority_order:
+  - name: Powers of Attorney Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "1-4"
+  - name: Indian Contract Act, 1872
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "182-238"
+  - name: Registration Act, 1908
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 600
+    section_hint: "17, 32"
+  - name: Transfer of Property Act, 1882
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 800
+    section_hint: "5-11"
+  - name: Specific Relief Act, 1963
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 400
+    section_hint: "14"
+  - name: Indian Stamp Act, 1899
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Act_Registration-Act-1908.pdf
+    tokens: 500
+    section_hint: "Article 48"
+  - name: Maharashtra Land Revenue Code, 1966
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/the_maharashtra_land_revenue_code.pdf
+    tokens: 3000
+    section_hint: "149-153"
+    priority: low
+  - name: Maharashtra Rent Control Act, 1999
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/eng_maharashtra_rent_control_ac.pdf
+    tokens: 300
+    section_hint: "24"
+    priority: low
+  - name: BHC Judgment - POA Revocation 2023
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_15.docx
+    tokens: 2800
+    section_hint: "Powers of Attorney Act s.2 revocation conditions"
+    priority: low
+  - name: BHC Judgment - General vs Special POA 2022
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_16.docx
+    tokens: 3000
+    section_hint: "Indian Contract Act s.188 general vs special authority"
+    priority: low
+  - name: BHC Judgment - POA Property Transaction 2021
+    path: Maharashtra Legal Document Dataset/Maharashtra Legal Corpus/Augmented_Deed_17.docx
+    tokens: 2700
+    section_hint: "Registration Act s.32 presentation by agent"
+    priority: low
