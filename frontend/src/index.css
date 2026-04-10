@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-premium-bg bg-premium-page font-sans text-premium-text antialiased;
+  }
+}
+
+@layer components {
+  .card-premium {
+    @apply rounded-3xl border border-premium-line bg-premium-surface shadow-premium;
+  }
+
+  .btn-primary {
+    @apply rounded-xl bg-gradient-to-r from-premium-primary to-premium-primaryDark px-4 py-2.5 font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-[#e7c9ad] bg-[#f7e4d4] px-4 py-2.5 font-semibold text-[#5d3827] transition hover:bg-[#f2dcc8] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-ghost {
+    @apply rounded-xl border border-[#dfd2c3] bg-[#efe8df] px-4 py-2.5 font-semibold text-[#5f4e45] transition hover:bg-[#e8dfd3] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .control {
+    @apply w-full rounded-xl border border-[#ddccb8] bg-white px-3 py-2.5 text-sm outline-none transition focus:border-premium-primary focus:ring-2 focus:ring-[#cb714740];
+  }
+}
