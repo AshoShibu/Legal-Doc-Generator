@@ -220,7 +220,7 @@ function App() {
         <div className="card-premium w-full max-w-3xl px-8 py-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8e5639]">Maharashtra Legal Drafting Suite</p>
           <h1 className="mt-3 font-display text-3xl leading-tight text-premium-text sm:text-4xl">Maharashtra Legal Document Generation System</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-premium-muted">Tailwind-powered premium workspace for intake, generation, review, and export.</p>
+          <p className="mx-auto mt-4 max-w-2xl text-premium-muted">Workspace for intake, generation, review, and export.</p>
           {loadingBoot ? <div className="mx-auto mt-5 max-w-md rounded-xl border border-[#f2d19f] bg-[#fff8ea] px-4 py-2 text-sm text-[#8e5836]">Connecting to backend...</div> : null}
           {error ? <div className="mx-auto mt-5 max-w-xl rounded-xl border border-[#efbbb3] bg-[#ffece9] px-4 py-2 text-sm text-premium-danger">{error}</div> : null}
           <button className="btn-primary mt-7" disabled={loadingBoot || !!error} onClick={() => setEntered(true)}>Enter Workspace</button>
