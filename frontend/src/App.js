@@ -3,6 +3,43 @@ import { useEffect, useMemo, useState } from "react";
 const API_BASE = process.env.REACT_APP_API_BASE_URL || "";
 
 const isEmpty = (v) => v === "" || v === null || v === undefined || (Array.isArray(v) && v.length === 0);
+const landingDocTypes = [
+  "Sale Deed",
+  "Mortgage Deed",
+  "Power of Attorney",
+  "Leave and License Agreement",
+  "Gift Deed",
+  "Conveyance Deed",
+  "Affidavit",
+];
+const landingSteps = [
+  {
+    title: "Choose Your Document",
+    body: "Select the type of document you need, such as a Sale Deed, Mortgage Deed, Power of Attorney, or Affidavit.",
+  },
+  {
+    title: "Fill the Questionnaire",
+    body: "Provide required details through a guided form. No legal expertise is needed — the system structures everything for you.",
+  },
+  {
+    title: "Download Your Draft",
+    body: "Receive a fully formatted legal document with proper structure and references. Download it as a DOCX or PDF.",
+  },
+];
+const landingFeatures = [
+  {
+    title: "Grounded in Maharashtra Law",
+    body: "Each document includes references to applicable legal frameworks such as the Transfer of Property Act, Registration Act, and relevant state laws.",
+  },
+  {
+    title: "No Document Upload Required",
+    body: "Users can directly fill out the questionnaire without needing land records. Upload is optional for auto-filling details.",
+  },
+  {
+    title: "Fast and Efficient",
+    body: "Documents are generated in minutes, reducing time and effort significantly.",
+  },
+];
 const showField = (field, data) => {
   const c = field.conditional_on;
   return !c || data[c.field] === c.value;
@@ -216,11 +253,70 @@ function App() {
 
   if (!entered) {
     return (
-      <div className="grid min-h-screen place-items-center p-4">
-        <div className="card-premium w-full max-w-3xl px-8 py-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8e5639]">Maharashtra Legal Drafting Suite</p>
-          <h1 className="mt-3 font-display text-3xl leading-tight text-premium-text sm:text-4xl">Maharashtra Legal Document Generation System</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-premium-muted">Workspace for intake, generation, review, and export.</p>
+      <div className="mx-auto max-w-6xl p-4 md:p-6">
+        <div className="card-premium overflow-hidden">
+          <div className="bg-gradient-to-br from-[#fff6ee] via-[#fffdf9] to-[#f6ece2] px-8 py-10 md:px-12 md:py-12">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8e5639]">Maharashtra Legal Drafting Suite</p>
+            <h1 className="mt-3 font-display text-3xl leading-tight text-premium-text sm:text-4xl md:text-5xl">Maharashtra Legal Document Generation</h1>
+            <p className="mt-3 text-lg font-semibold text-[#8f4b2f]">Draft Legal Documents in Minutes, Not Days</p>
+            <div className="mt-5 max-w-4xl space-y-3 text-left text-sm leading-7 text-premium-muted sm:text-base">
+              <p>Getting a legal document drafted in Maharashtra typically involves visiting a lawyer, waiting several days, and paying significant fees — even for routine documents like a Sale Deed or Affidavit.</p>
+              <p>This system simplifies the process by allowing users to fill out a structured questionnaire and instantly generate a complete legal draft.</p>
+              <p>The generated document is citation-grounded, referencing relevant Maharashtra laws, and is ready for review and finalization by a legal professional.</p>
+            </div>
+          </div>
+
+          <div className="grid gap-8 px-8 py-8 md:px-12 md:py-10">
+            <section>
+              <h2 className="font-display text-2xl text-premium-text">How It Works</h2>
+              <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
+                {landingSteps.map((stepItem, index) => (
+                  <div className="rounded-2xl border border-[#eadbcc] bg-[#fffaf3] p-5" key={stepItem.title}>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8e5639]">Step {index + 1}</p>
+                    <h3 className="mt-2 text-lg font-semibold text-premium-text">{stepItem.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-premium-muted">{stepItem.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <h2 className="font-display text-2xl text-premium-text">Supported Document Types</h2>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {landingDocTypes.map((item) => (
+                    <span className="rounded-full border border-[#e7c9ad] bg-[#fdf1e6] px-4 py-2 text-sm font-semibold text-[#8f4b2f]" key={item}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="font-display text-2xl text-premium-text">Important Note</h2>
+                <div className="mt-4 rounded-2xl border border-[#f0cb8d] bg-[#fff3e2] p-5 text-sm leading-6 text-[#7a4d19]">
+                  <p>This system generates a draft document for assistance purposes.</p>
+                  <p className="mt-2">It is not a substitute for professional legal advice.</p>
+                  <p className="mt-2">All generated documents should be reviewed and approved by a qualified advocate before official use or registration.</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="font-display text-2xl text-premium-text">Key Features</h2>
+              <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
+                {landingFeatures.map((feature) => (
+                  <div className="rounded-2xl border border-[#efdfcf] bg-white p-5" key={feature.title}>
+                    <h3 className="text-lg font-semibold text-premium-text">{feature.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-premium-muted">{feature.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-6 max-w-3xl text-center">
           {loadingBoot ? <div className="mx-auto mt-5 max-w-md rounded-xl border border-[#f2d19f] bg-[#fff8ea] px-4 py-2 text-sm text-[#8e5836]">Connecting to backend...</div> : null}
           {error ? <div className="mx-auto mt-5 max-w-xl rounded-xl border border-[#efbbb3] bg-[#ffece9] px-4 py-2 text-sm text-premium-danger">{error}</div> : null}
           <button className="btn-primary mt-7" disabled={loadingBoot || !!error} onClick={() => setEntered(true)}>Enter Workspace</button>
