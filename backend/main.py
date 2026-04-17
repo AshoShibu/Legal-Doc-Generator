@@ -167,6 +167,17 @@ def _extract_google_drive_file_id(url: str) -> str | None:
 
 
 def _download_google_drive_archive(url: str, destination: Path) -> None:
+    try:
+        import gdown
+    except ImportError:
+        gdown = None
+
+    if gdown is not None:
+        result = gdown.download(url=url, output=str(destination), quiet=False, fuzzy=True)
+        if not result or not destination.exists() or destination.stat().st_size == 0:
+            raise RuntimeError("Google Drive download failed or produced an empty archive.")
+        return
+
     file_id = _extract_google_drive_file_id(url)
     session = requests.Session()
 
@@ -202,6 +213,15 @@ def _download_google_drive_archive(url: str, destination: Path) -> None:
 
 
 def _extract_archive(archive_path: Path, destination_dir: Path) -> None:
+    if archive_path.exists():
+        with archive_path.open("rb") as fh:
+            signature = fh.read(8)
+        if signature.startswith(b"<!DOCTYP") or signature.startswith(b"<html") or signature.startswith(b"\n<html"):
+            raise RuntimeError(
+                "Dataset bootstrap download returned HTML instead of the archive. "
+                "Check Google Drive sharing settings or use a direct-download capable link."
+            )
+
     suffixes = archive_path.suffixes
     if archive_path.suffix.lower() == ".zip":
         with zipfile.ZipFile(archive_path) as zf:
