@@ -38,6 +38,7 @@ from src.ocr.pipeline import extract as extract_ocr
 from src.pii.redactor import redact
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
 SCHEMAS_DIR = ROOT / "config" / "intake_schemas"
 OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", "./output"))
@@ -53,10 +54,17 @@ app = FastAPI(
     version="1.0.0",
 )
 
-_template_registry = TemplateRegistry()
-templates_dir = os.environ.get("TEMPLATES_DIR")
-if templates_dir:
-    _template_registry.load_templates(templates_dir)
+_template_registry: TemplateRegistry | None = None
+
+
+def _get_template_registry() -> TemplateRegistry:
+    global _template_registry
+    if _template_registry is None:
+        _template_registry = TemplateRegistry()
+        templates_dir = os.environ.get("TEMPLATES_DIR")
+        if templates_dir:
+            _template_registry.load_templates(templates_dir)
+    return _template_registry
 
 
 def _load_schema(doc_type: str) -> dict[str, Any]:
@@ -238,6 +246,7 @@ def _extract_archive(archive_path: Path, destination_dir: Path) -> None:
 
 def _ensure_dataset_available() -> None:
     if _dataset_is_ready():
+        logger.info("Dataset already present at %s", DATASET_ROOT)
         return
 
     if not DATASET_BOOTSTRAP_URL:
@@ -253,8 +262,9 @@ def _ensure_dataset_available() -> None:
         shutil.rmtree(temp_extract_dir)
     temp_extract_dir.mkdir(parents=True, exist_ok=True)
 
-    logger.info("Downloading dataset archive from bootstrap URL...")
+    logger.info("Downloading dataset archive from bootstrap URL to %s", archive_path)
     _download_google_drive_archive(DATASET_BOOTSTRAP_URL, archive_path)
+    logger.info("Dataset archive downloaded (%s bytes)", archive_path.stat().st_size if archive_path.exists() else 0)
 
     logger.info("Extracting dataset archive to %s", temp_extract_dir)
     _extract_archive(archive_path, temp_extract_dir)
@@ -274,7 +284,10 @@ def _ensure_dataset_available() -> None:
 
 @app.on_event("startup")
 def bootstrap_runtime_dependencies() -> None:
+    logger.info("Application startup bootstrap beginning")
     _ensure_dataset_available()
+    _get_template_registry()
+    logger.info("Application startup bootstrap complete")
 
 
 class GenerateRequest(BaseModel):
@@ -414,7 +427,7 @@ def generate(req: GenerateRequest) -> dict[str, Any]:
 
         cache = load_cache(req.document_type, req.backend)
 
-        template = _template_registry.get_template(req.document_type)
+        template = _get_template_registry().get_template(req.document_type)
         slot_names = [slot.name for slot in sorted(template.slots, key=lambda s: s.position)]
 
         draft = generate_draft(
