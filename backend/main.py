@@ -185,6 +185,8 @@ def _extract_google_drive_file_id(url: str) -> str | None:
 
 def _download_google_drive_archive(url: str, destination: Path) -> None:
     _startup_log(f"Preparing Google Drive download to {destination}")
+    file_id = _extract_google_drive_file_id(url)
+    gdown_url = f"https://drive.google.com/uc?id={file_id}" if file_id else url
     try:
         import gdown
     except ImportError:
@@ -192,14 +194,13 @@ def _download_google_drive_archive(url: str, destination: Path) -> None:
 
     if gdown is not None:
         _startup_log("Using gdown for Google Drive download")
-        result = gdown.download(url=url, output=str(destination), quiet=False, fuzzy=True)
+        result = gdown.download(url=gdown_url, output=str(destination), quiet=False)
         if not result or not destination.exists() or destination.stat().st_size == 0:
             raise RuntimeError("Google Drive download failed or produced an empty archive.")
         _startup_log(f"Google Drive download completed ({destination.stat().st_size} bytes)")
         return
 
     _startup_log("gdown unavailable, falling back to requests-based Google Drive download")
-    file_id = _extract_google_drive_file_id(url)
     session = requests.Session()
 
     if file_id:
