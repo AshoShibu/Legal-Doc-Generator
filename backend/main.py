@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import shutil
+import traceback
 import sys
 import tarfile
 import tempfile
@@ -57,13 +58,21 @@ app = FastAPI(
 _template_registry: TemplateRegistry | None = None
 
 
+def _startup_log(message: str) -> None:
+    print(f"[startup] {message}", flush=True)
+    logger.info(message)
+
+
 def _get_template_registry() -> TemplateRegistry:
     global _template_registry
     if _template_registry is None:
+        _startup_log("Initializing template registry")
         _template_registry = TemplateRegistry()
         templates_dir = os.environ.get("TEMPLATES_DIR")
         if templates_dir:
+            _startup_log(f"Loading templates from {templates_dir}")
             _template_registry.load_templates(templates_dir)
+        _startup_log("Template registry ready")
     return _template_registry
 
 
@@ -175,17 +184,21 @@ def _extract_google_drive_file_id(url: str) -> str | None:
 
 
 def _download_google_drive_archive(url: str, destination: Path) -> None:
+    _startup_log(f"Preparing Google Drive download to {destination}")
     try:
         import gdown
     except ImportError:
         gdown = None
 
     if gdown is not None:
+        _startup_log("Using gdown for Google Drive download")
         result = gdown.download(url=url, output=str(destination), quiet=False, fuzzy=True)
         if not result or not destination.exists() or destination.stat().st_size == 0:
             raise RuntimeError("Google Drive download failed or produced an empty archive.")
+        _startup_log(f"Google Drive download completed ({destination.stat().st_size} bytes)")
         return
 
+    _startup_log("gdown unavailable, falling back to requests-based Google Drive download")
     file_id = _extract_google_drive_file_id(url)
     session = requests.Session()
 
@@ -218,9 +231,11 @@ def _download_google_drive_archive(url: str, destination: Path) -> None:
         for chunk in response.iter_content(chunk_size=1024 * 1024):
             if chunk:
                 fh.write(chunk)
+    _startup_log(f"Fallback download completed ({destination.stat().st_size} bytes)")
 
 
 def _extract_archive(archive_path: Path, destination_dir: Path) -> None:
+    _startup_log(f"Inspecting archive {archive_path}")
     if archive_path.exists():
         with archive_path.open("rb") as fh:
             signature = fh.read(8)
@@ -232,13 +247,17 @@ def _extract_archive(archive_path: Path, destination_dir: Path) -> None:
 
     suffixes = archive_path.suffixes
     if archive_path.suffix.lower() == ".zip":
+        _startup_log("Extracting zip archive")
         with zipfile.ZipFile(archive_path) as zf:
             zf.extractall(destination_dir)
+        _startup_log(f"Zip extraction complete into {destination_dir}")
         return
 
     if suffixes[-2:] == [".tar", ".gz"] or suffixes[-2:] == [".tar", ".bz2"] or suffixes[-2:] == [".tar", ".xz"] or archive_path.suffix.lower() == ".tgz":
+        _startup_log("Extracting tar archive")
         with tarfile.open(archive_path, "r:*") as tf:
             tf.extractall(destination_dir)
+        _startup_log(f"Tar extraction complete into {destination_dir}")
         return
 
     raise RuntimeError(f"Unsupported dataset archive format: {archive_path.name}")
@@ -246,11 +265,11 @@ def _extract_archive(archive_path: Path, destination_dir: Path) -> None:
 
 def _ensure_dataset_available() -> None:
     if _dataset_is_ready():
-        logger.info("Dataset already present at %s", DATASET_ROOT)
+        _startup_log(f"Dataset already present at {DATASET_ROOT}")
         return
 
     if not DATASET_BOOTSTRAP_URL:
-        logger.warning("DATASET_ROOT is empty and DATASET_BOOTSTRAP_URL is not configured.")
+        _startup_log("DATASET_ROOT is empty and DATASET_BOOTSTRAP_URL is not configured")
         return
 
     DATASET_ROOT.mkdir(parents=True, exist_ok=True)
@@ -258,36 +277,48 @@ def _ensure_dataset_available() -> None:
     archive_path = DATASET_ROOT.parent / archive_name
     temp_extract_dir = DATASET_ROOT.parent / f"{DATASET_ROOT.name}_extracting"
 
+    _startup_log(f"DATASET_ROOT={DATASET_ROOT}")
+    _startup_log(f"TEMPLATES_DIR={os.environ.get('TEMPLATES_DIR', '')}")
+    _startup_log(f"Archive target={archive_path}")
+    _startup_log(f"Temporary extract dir={temp_extract_dir}")
+
     if temp_extract_dir.exists():
         shutil.rmtree(temp_extract_dir)
     temp_extract_dir.mkdir(parents=True, exist_ok=True)
 
-    logger.info("Downloading dataset archive from bootstrap URL to %s", archive_path)
+    _startup_log("Starting dataset bootstrap download")
     _download_google_drive_archive(DATASET_BOOTSTRAP_URL, archive_path)
-    logger.info("Dataset archive downloaded (%s bytes)", archive_path.stat().st_size if archive_path.exists() else 0)
+    _startup_log(f"Dataset archive downloaded ({archive_path.stat().st_size if archive_path.exists() else 0} bytes)")
 
-    logger.info("Extracting dataset archive to %s", temp_extract_dir)
+    _startup_log("Starting archive extraction")
     _extract_archive(archive_path, temp_extract_dir)
 
     extracted_items = [item for item in temp_extract_dir.iterdir()]
+    _startup_log(f"Top-level extracted items: {[item.name for item in extracted_items]}")
     replacement_source = temp_extract_dir
     if len(extracted_items) == 1 and extracted_items[0].is_dir():
         replacement_source = extracted_items[0]
+        _startup_log(f"Using nested extracted directory as replacement source: {replacement_source}")
 
     if DATASET_ROOT.exists():
         shutil.rmtree(DATASET_ROOT, ignore_errors=True)
     shutil.move(str(replacement_source), str(DATASET_ROOT))
     shutil.rmtree(temp_extract_dir, ignore_errors=True)
     archive_path.unlink(missing_ok=True)
-    logger.info("Dataset bootstrap complete at %s", DATASET_ROOT)
+    _startup_log(f"Dataset bootstrap complete at {DATASET_ROOT}")
 
 
 @app.on_event("startup")
 def bootstrap_runtime_dependencies() -> None:
-    logger.info("Application startup bootstrap beginning")
-    _ensure_dataset_available()
-    _get_template_registry()
-    logger.info("Application startup bootstrap complete")
+    _startup_log("Application startup bootstrap beginning")
+    try:
+        _ensure_dataset_available()
+        _get_template_registry()
+        _startup_log("Application startup bootstrap complete")
+    except Exception as exc:
+        _startup_log(f"Startup bootstrap failed: {exc}")
+        _startup_log(traceback.format_exc())
+        raise
 
 
 class GenerateRequest(BaseModel):
