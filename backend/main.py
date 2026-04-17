@@ -2,12 +2,17 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
+import shutil
 import sys
+import tarfile
 import tempfile
 import uuid
+import zipfile
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qs, urlparse
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -15,6 +20,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -31,10 +37,15 @@ from src.logging.run_logger import log_run
 from src.ocr.pipeline import extract as extract_ocr
 from src.pii.redactor import redact
 
+logger = logging.getLogger(__name__)
+
 SCHEMAS_DIR = ROOT / "config" / "intake_schemas"
 OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", "./output"))
 FRONTEND_BUILD_DIR = ROOT / "frontend" / "build"
 DEFAULT_BACKEND = os.environ.get("LLM_DEFAULT_BACKEND", "groq_llama3_8b")
+DATASET_ROOT = Path(os.environ.get("DATASET_ROOT", "./Maharashtra Legal Document Dataset"))
+DATASET_BOOTSTRAP_URL = os.environ.get("DATASET_BOOTSTRAP_URL", "").strip()
+DATASET_BOOTSTRAP_ARCHIVE = os.environ.get("DATASET_BOOTSTRAP_ARCHIVE", "").strip()
 
 app = FastAPI(
     title="Maharashtra Legal Document API",
@@ -126,6 +137,124 @@ app.add_middleware(
 
 if (FRONTEND_BUILD_DIR / "static").exists():
     app.mount("/static", StaticFiles(directory=FRONTEND_BUILD_DIR / "static"), name="frontend-static")
+
+
+def _dataset_is_ready() -> bool:
+    if not DATASET_ROOT.exists():
+        return False
+    if DATASET_ROOT.is_file():
+        return False
+    return any(DATASET_ROOT.iterdir())
+
+
+def _extract_google_drive_file_id(url: str) -> str | None:
+    parsed = urlparse(url)
+    if "drive.google.com" not in parsed.netloc:
+        return None
+
+    query_id = parse_qs(parsed.query).get("id")
+    if query_id:
+        return query_id[0]
+
+    parts = [part for part in parsed.path.split("/") if part]
+    if "file" in parts and "d" in parts:
+        try:
+            return parts[parts.index("d") + 1]
+        except IndexError:
+            return None
+
+    return None
+
+
+def _download_google_drive_archive(url: str, destination: Path) -> None:
+    file_id = _extract_google_drive_file_id(url)
+    session = requests.Session()
+
+    if file_id:
+        base_url = "https://drive.google.com/uc?export=download"
+        response = session.get(base_url, params={"id": file_id}, stream=True, timeout=60)
+        response.raise_for_status()
+
+        confirm_token = None
+        for key, value in response.cookies.items():
+            if key.startswith("download_warning"):
+                confirm_token = value
+                break
+
+        content_type = response.headers.get("Content-Type", "")
+        if confirm_token or "text/html" in content_type:
+            response.close()
+            response = session.get(
+                base_url,
+                params={"id": file_id, "confirm": confirm_token or "t"},
+                stream=True,
+                timeout=60,
+            )
+            response.raise_for_status()
+    else:
+        response = session.get(url, stream=True, timeout=60)
+        response.raise_for_status()
+
+    with destination.open("wb") as fh:
+        for chunk in response.iter_content(chunk_size=1024 * 1024):
+            if chunk:
+                fh.write(chunk)
+
+
+def _extract_archive(archive_path: Path, destination_dir: Path) -> None:
+    suffixes = archive_path.suffixes
+    if archive_path.suffix.lower() == ".zip":
+        with zipfile.ZipFile(archive_path) as zf:
+            zf.extractall(destination_dir)
+        return
+
+    if suffixes[-2:] == [".tar", ".gz"] or suffixes[-2:] == [".tar", ".bz2"] or suffixes[-2:] == [".tar", ".xz"] or archive_path.suffix.lower() == ".tgz":
+        with tarfile.open(archive_path, "r:*") as tf:
+            tf.extractall(destination_dir)
+        return
+
+    raise RuntimeError(f"Unsupported dataset archive format: {archive_path.name}")
+
+
+def _ensure_dataset_available() -> None:
+    if _dataset_is_ready():
+        return
+
+    if not DATASET_BOOTSTRAP_URL:
+        logger.warning("DATASET_ROOT is empty and DATASET_BOOTSTRAP_URL is not configured.")
+        return
+
+    DATASET_ROOT.mkdir(parents=True, exist_ok=True)
+    archive_name = DATASET_BOOTSTRAP_ARCHIVE or Path(urlparse(DATASET_BOOTSTRAP_URL).path).name or "dataset.zip"
+    archive_path = DATASET_ROOT.parent / archive_name
+    temp_extract_dir = DATASET_ROOT.parent / f"{DATASET_ROOT.name}_extracting"
+
+    if temp_extract_dir.exists():
+        shutil.rmtree(temp_extract_dir)
+    temp_extract_dir.mkdir(parents=True, exist_ok=True)
+
+    logger.info("Downloading dataset archive from bootstrap URL...")
+    _download_google_drive_archive(DATASET_BOOTSTRAP_URL, archive_path)
+
+    logger.info("Extracting dataset archive to %s", temp_extract_dir)
+    _extract_archive(archive_path, temp_extract_dir)
+
+    extracted_items = [item for item in temp_extract_dir.iterdir()]
+    replacement_source = temp_extract_dir
+    if len(extracted_items) == 1 and extracted_items[0].is_dir():
+        replacement_source = extracted_items[0]
+
+    if DATASET_ROOT.exists():
+        shutil.rmtree(DATASET_ROOT, ignore_errors=True)
+    shutil.move(str(replacement_source), str(DATASET_ROOT))
+    shutil.rmtree(temp_extract_dir, ignore_errors=True)
+    archive_path.unlink(missing_ok=True)
+    logger.info("Dataset bootstrap complete at %s", DATASET_ROOT)
+
+
+@app.on_event("startup")
+def bootstrap_runtime_dependencies() -> None:
+    _ensure_dataset_available()
 
 
 class GenerateRequest(BaseModel):

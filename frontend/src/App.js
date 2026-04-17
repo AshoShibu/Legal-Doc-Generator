@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_BASE = process.env.REACT_APP_API_BASE_URL || "";
+const getApiBase = () => {
+  const explicit = process.env.REACT_APP_API_BASE_URL;
+  if (explicit) return explicit;
+  if (typeof window === "undefined") return "";
+
+  const { protocol, hostname, port, origin } = window.location;
+  if (port === "3000") return `${protocol}//${hostname}:8000`;
+  return origin;
+};
+
+const API_BASE = getApiBase();
 
 const isEmpty = (v) => v === "" || v === null || v === undefined || (Array.isArray(v) && v.length === 0);
 const landingDocTypes = [

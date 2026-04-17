@@ -177,6 +177,16 @@ cp .env.example .env
 # Edit .env — add your GROQ_API_KEY at minimum
 ```
 
+For ephemeral hosting such as free Render, you can also bootstrap the dataset from an archive URL on startup:
+
+```bash
+DATASET_ROOT=./runtime-dataset
+DATASET_BOOTSTRAP_URL=https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing
+DATASET_BOOTSTRAP_ARCHIVE=dataset.zip
+```
+
+If the archive contains a top-level `Maharashtra Legal Document Dataset/` folder, `DATASET_ROOT` should point to the parent extraction directory, not the dataset folder itself.
+
 ### 3. Pull Ollama models (for Phase 1.5 model comparison)
 
 ```bash
