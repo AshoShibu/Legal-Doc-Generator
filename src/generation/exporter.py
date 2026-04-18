@@ -84,7 +84,7 @@ def export_docx(document: GeneratedDocument, output_path: str) -> str:
             logger.warning("DOCX underlining failed, exporting without underlining: %s", exc)
 
     # ---- Citation index ----
-    _add_citation_index(doc, document.citations)
+    _add_citation_index_text(doc, document.citation_index, document.citations)
 
     # Ensure output directory exists
     out = Path(output_path)
@@ -180,6 +180,36 @@ def _add_bookmark_ref(paragraph, run, bookmark_name: str) -> None:
     run_elem.getparent().remove(run_elem)
     hyperlink.append(run_elem)
     paragraph._p.append(hyperlink)
+
+
+def _add_citation_index_text(doc, citation_index_text: str, citations: list[Citation]) -> None:
+    """
+    Append the final citation index exactly as generated so export output
+    matches the preview. For grounded citations, preserve bookmark targets
+    so inline [N] links can still jump to the matching entry.
+    """
+    from docx.shared import Pt
+
+    doc.add_paragraph("-" * 80)
+
+    normalized = citation_index_text.strip("\n")
+    if not normalized:
+        doc.add_paragraph("(No citations found in this document.)")
+        return
+
+    bookmark_numbers = {str(i) for i in range(1, len(citations) + 1)}
+
+    for raw_line in normalized.splitlines():
+        p = doc.add_paragraph()
+        line = _clean_for_docx(raw_line)
+        marker_match = _CITATION_MARKER_RE.match(line.strip())
+        if marker_match and marker_match.group(1) in bookmark_numbers:
+            _insert_bookmark(p, f"citation_{marker_match.group(1)}")
+
+        run = p.add_run(line)
+        run.font.size = Pt(11 if "CITATION INDEX" in line else 9)
+        if "CITATION INDEX" in line:
+            run.bold = True
 
 
 def _add_citation_index(doc, citations: list[Citation]) -> None:
@@ -405,7 +435,7 @@ def _build_pdf_story(document: GeneratedDocument, styles) -> list:
     # ---- Citation index ----
     # Phase 1.5 mode: citation index already embedded in body text — skip anchor section.
     # Phase 1.0 mode: render structured citations with internal anchor links.
-    if document.citations:
+    if document.citations and not document.citation_index.strip("\n"):
         story.append(Paragraph("CITATION INDEX", citation_heading_style))
         for i, citation in enumerate(document.citations, start=1):
             story.append(AnchorFlowable(f"citation_{i}"))
@@ -421,6 +451,12 @@ def _build_pdf_story(document: GeneratedDocument, styles) -> list:
                 f" — Cited in clause(s): {clause_refs}"
             )
             story.append(Paragraph(entry, citation_entry_style))
+
+    normalized_index = document.citation_index.strip("\n")
+    if normalized_index:
+        # Remove any fallback citation section that may have been added above.
+        while story and getattr(story[-1], "__class__", None).__name__ == "Paragraph":
+            break
 
     return story
 

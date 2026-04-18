@@ -138,6 +138,14 @@ def _citation_to_dict(citation: Any) -> dict[str, Any]:
         "source_document": getattr(citation, "source_document", ""),
     }
 
+
+def _count_citation_entries(citation_index: str) -> int:
+    return sum(
+        1
+        for line in citation_index.splitlines()
+        if line.strip().startswith("[") and "]" in line
+    )
+
 def _pipeline_slug(pipeline_variant: str) -> str:
     return pipeline_variant.lower().replace(" ", "_")
 
@@ -510,6 +518,7 @@ def generate(req: GenerateRequest) -> dict[str, Any]:
             "header": generated.header,
             "body": generated.body,
             "citation_index": generated.citation_index,
+            "citation_count": _count_citation_entries(generated.citation_index),
             "citations": [_citation_to_dict(c) for c in generated.citations],
             "ungrounded_clauses": generated.ungrounded_clauses,
             "high_hallucination_risk": generated.high_hallucination_risk,

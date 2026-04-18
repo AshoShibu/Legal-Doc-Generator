@@ -428,7 +428,7 @@ function App() {
               <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm text-premium-muted">
                 <span>Run ID: <strong className="text-premium-text">{result.run_id}</strong></span>
                 <span>Model: <strong className="text-premium-text">{result.backend}</strong></span>
-                <span>Citations: <strong className="text-premium-text">{result.citations?.length || 0}</strong></span>
+                <span>Citations: <strong className="text-premium-text">{result.citation_count ?? result.citations?.length ?? 0}</strong></span>
               </div>
               <pre className="mt-4 max-h-[460px] overflow-auto whitespace-pre-wrap rounded-2xl border border-[#e4d2bf] bg-[#fffefa] p-4 font-display text-sm leading-7">{result.output}</pre>
               <div className="mt-4 flex flex-wrap gap-2">
